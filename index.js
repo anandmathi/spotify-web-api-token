@@ -2,11 +2,17 @@ var request = require('request');
 var express = require('express');
 var app = express();
 
+app.use(function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 app.set('port', process.env.PORT || 3000);
 
 app.get('/token', function(req, resp) {
-  resp.header('Access-Control-Allow-Origin', '*');
-  resp.header('Access-Control-Allow-Headers', 'X-Requested-With');
+  // resp.header('Access-Control-All/*ow-Origin', '*');
+  // resp.header('Access-Control-Allow-Headers', 'X-Requested-With');*/
 
   var client_id = process.env.SPOTIFY_CLIENT_ID;
   var client_secret = process.env.SPOTIFY_CLIENT_SECRET;
