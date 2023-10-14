@@ -7,7 +7,9 @@ app.use(cors({
       origin: "*"
     }
 ))
-app.options('*', cors())
+app.options('*', cors( {
+  allowedHeaders: ['Authorization', 'Content-Type']
+}));
 
 // app.use(function(req, res, next) {
 //   res.header('Access-Control-Allow-Origin', '*');
